@@ -1,0 +1,9 @@
+public class MethodProgram {
+    public static void main(String[] args) {
+        System.out.println("Method: " + calculateSix());
+    }
+
+    public static int calculateSix() {
+        return 3 * 2; // multiplication to get 6
+    }
+}
