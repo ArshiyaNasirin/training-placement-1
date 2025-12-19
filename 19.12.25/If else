@@ -1,0 +1,12 @@
+public class ConditionProgram {
+    public static void main(String[] args) {
+        int x = 2, y = 4;
+        int result;
+        if(x + y == 6) {
+            result = x + y;
+        } else {
+            result = 6;
+        }
+        System.out.println("Condition: " + result);
+    }
+}
