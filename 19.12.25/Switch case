@@ -1,0 +1,12 @@
+public class SwitchProgram {
+    public static void main(String[] args) {
+        int value = 2;
+        int result;
+        switch(value) {
+            case 1: result = 5; break;
+            case 2: result = 6; break; // this case gives 6
+            default: result = 0;
+        }
+        System.out.println("Switch: " + result);
+    }
+}
