@@ -1,0 +1,17 @@
+class Armstrong {
+    public static void main(String[] args) {
+        int num = 9474, temp = num, sum = 0;
+        int digits = String.valueOf(num).length();
+
+        while (temp != 0) {
+            int rem = temp % 10;
+            sum += Math.pow(rem, digits);
+            temp /= 10;
+        }
+
+        if (sum == num)
+            System.out.println("Armstrong Number");
+        else
+            System.out.println("Not an Armstrong Number");
+    }
+}
