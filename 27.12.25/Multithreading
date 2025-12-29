@@ -1,0 +1,31 @@
+class OddEven {
+    int count = 1;
+    int n = 10;
+
+    synchronized void printOdd() {
+        while (count <= n) {
+            if (count % 2 == 0) {
+                try { wait(); } catch (Exception e) {}
+            }
+            System.out.println("Odd: " + count++);
+            notify();
+        }
+    }
+
+    synchronized void printEven() {
+        while (count <= n) {
+            if (count % 2 == 1) {
+                try { wait(); } catch (Exception e) {}
+            }
+            System.out.println("Even: " + count++);
+            notify();
+        }
+    }
+
+    public static void main(String[] args) {
+        OddEven obj = new OddEven();
+
+        new Thread(() -> obj.printOdd()).start();
+        new Thread(() -> obj.printEven()).start();
+    }
+}
