@@ -1,0 +1,31 @@
+class PC {
+    int item;
+    boolean produced = false;
+
+    synchronized void produce() throws Exception {
+        if (produced) wait();
+        item = 10;
+        System.out.println("Produced: " + item);
+        produced = true;
+        notify();
+    }
+
+    synchronized void consume() throws Exception {
+        if (!produced) wait();
+        System.out.println("Consumed: " + item);
+        produced = false;
+        notify();
+    }
+
+    public static void main(String[] args) {
+        PC pc = new PC();
+
+        new Thread(() -> {
+            try { pc.produce(); } catch (Exception e) {}
+        }).start();
+
+        new Thread(() -> {
+            try { pc.consume(); } catch (Exception e) {}
+        }).start();
+    }
+}
